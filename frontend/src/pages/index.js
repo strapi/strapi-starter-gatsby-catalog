@@ -7,13 +7,17 @@ import SEO from "../components/seo"
 
 const IndexPage = ({ data: { allStrapiCategory } }) => {
   const categories = allStrapiCategory.edges
-  
+
   return (
     <Layout>
       <SEO title="Home" />
-      {categories.map(({node}) => (
-        <div key={node.name}>{node.name}</div>
-      ))}
+      <div className="flex flex-wrap h-/14 md:self-center justify-center">
+        {categories.map(({ node }) => (
+          <Link to={`categories/${node.slug}`} className="p-4 m-2 h-60 w-60 rounded shadow" key={node.name}>
+            {node.name}
+          </Link>
+        ))}
+      </div>
     </Layout>
   )
 }
@@ -24,6 +28,7 @@ export const query = graphql`
       edges {
         node {
           name
+          slug
         }
       }
     }
