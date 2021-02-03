@@ -1,10 +1,3 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
@@ -26,7 +19,7 @@ const Layout = ({ children }) => {
     <>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <div className="overflow-scroll">
-        <main className="flex w-4/5 m-auto">{children}</main>
+        <main className="w-4/5 m-auto">{children}</main>
         <footer className="mt-2">
           © {new Date().getFullYear()}, Built with
           {` `}

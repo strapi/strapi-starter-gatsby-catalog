@@ -1,14 +1,17 @@
 import React from "react"
 import Layout from "../../components/layout"
+import ProductList from "../../components/product-list"
 import { graphql } from "gatsby"
 
 const CategoryPage = ({ data }) => {
-  const category = data.strapiCategory
+  const products = data.strapiCategory.products
 
   return (
     <Layout>
-      <div>{category.name}</div>
-      <div>{category.products.map(product => product.title)}</div>
+      <div>
+        <h1 className="mb-8 text-2xl font-normal">{data.strapiCategory.name}</h1>
+        <ProductList products={products} />
+      </div>
     </Layout>
   )
 }
@@ -19,6 +22,15 @@ export const query = graphql`
       name
       products {
         title
+        slug
+        id
+        image {
+          childImageSharp {
+            fluid(maxWidth: 1280, maxHeight: 720) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }

@@ -1,9 +1,9 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
-
 import SEO from "../components/seo"
+import CategoryList from "../components/category-list"
 
 const IndexPage = ({ data: { allStrapiCategory } }) => {
   const categories = allStrapiCategory.edges
@@ -11,13 +11,8 @@ const IndexPage = ({ data: { allStrapiCategory } }) => {
   return (
     <Layout>
       <SEO title="Home" />
-      <div className="flex flex-wrap h-/14 md:self-center justify-center">
-        {categories.map(({ node }) => (
-          <Link to={`categories/${node.slug}`} className="p-4 m-2 h-60 w-60 rounded shadow" key={node.name}>
-            {node.name}
-          </Link>
-        ))}
-      </div>
+      <h1 className="mb-8 text-2xl font-normal">Categories</h1>
+      <CategoryList categories={categories} />
     </Layout>
   )
 }
@@ -29,6 +24,13 @@ export const query = graphql`
         node {
           name
           slug
+          image {
+            childImageSharp {
+              fluid(maxWidth: 1280, maxHeight: 720) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
       }
     }
