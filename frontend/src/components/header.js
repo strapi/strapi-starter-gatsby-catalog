@@ -6,11 +6,15 @@ import React from "react"
 const Header = ({ siteTitle }) => {
 
   return (
-    <header className="h-24 border-b p-8 mb-12">
-      <div className="flex justify-center">
-        <h1>
-          <Link>{siteTitle}</Link>
+    <header className="border-b p-8 mb-12">
+      <div className="flex flex-col items-center">
+        <h1 className="mb-4 font-bold text-4xl">
+          {siteTitle}
         </h1>
+        <div>
+          <Link className="mx-2 text-black-50" to='/'>Categories</Link>
+          <Link className="mx-2" to='/products'>Search</Link>
+        </div>
       </div>
     </header>
   )

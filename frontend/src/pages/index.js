@@ -23,6 +23,7 @@ export const query = graphql`
       edges {
         node {
           name
+          id
           slug
           image {
             childImageSharp {

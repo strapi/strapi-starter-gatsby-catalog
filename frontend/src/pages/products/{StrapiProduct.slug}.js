@@ -22,8 +22,8 @@ const ProductPage = ({ data }) => {
           <h1>{product.title}</h1>
           <div className="w-full">
             {product.specifications &&
-              product.specifications.map(spec => (
-                <div className="w-full flex justify-between items-between border-b mb-2 pb-1">
+              product.specifications.map((spec, index) => (
+                <div className="w-full flex justify-between items-between border-b mb-2 pb-1" key={`${spec.key}-${index}`}>
                   <span>{spec.key}</span>
                   <span>{spec.value}</span>
                 </div>
@@ -61,6 +61,7 @@ export const query = graphql`
     strapiProduct(slug: { eq: $slug }) {
       title
       productDescription
+      id
       image {
         childImageSharp {
           fluid(maxWidth: 1280, maxHeight: 720) {
@@ -75,6 +76,7 @@ export const query = graphql`
       relatedProducts {
         products {
           title
+          id
           image {
             childImageSharp {
               fluid(maxWidth: 1280, maxHeight: 720) {
