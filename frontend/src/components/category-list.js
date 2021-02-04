@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import SharpImage from "./sharp-image"
+import PropTypes from "prop-types";
 
 const CategoryList = ({ categories }) => (
   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -16,5 +17,9 @@ const CategoryList = ({ categories }) => (
     })}
   </div>
 )
+
+CategoryList.propTypes = {
+  categories: PropTypes.array,
+}
 
 export default CategoryList

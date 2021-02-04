@@ -3,13 +3,13 @@ import PropTypes from "prop-types"
 import React from "react"
 
 
-const Header = ({ siteTitle }) => {
+const Header = ({ siteName }) => {
 
   return (
     <header className="border-gray-200 border-b-2 p-8 mb-12">
       <div className="flex flex-col items-center">
         <h1 className="mb-4 font-bold text-4xl">
-          {siteTitle}
+          {siteName}
         </h1>
         <div>
           <Link className="mx-2 text-black-50" to='/'>Categories</Link>
@@ -21,11 +21,11 @@ const Header = ({ siteTitle }) => {
 }
 
 Header.propTypes = {
-  siteTitle: PropTypes.string,
+  siteName: PropTypes.string,
 }
 
 Header.defaultProps = {
-  siteTitle: ``,
+  siteName: ``,
 }
 
 

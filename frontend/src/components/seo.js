@@ -4,6 +4,24 @@ import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 
 const SEO = ({ seo = {} }) => {
+
+  const query = graphql`
+  query {
+    strapiGlobal {
+      siteName
+      favicon {
+        publicURL
+      }
+      defaultSeo {
+        metaTitle
+        metaDescription
+        shareImage {
+          publicURL
+        }
+      }
+    }
+  }
+`;
   const { strapiGlobal } = useStaticQuery(query);
   const { defaultSeo, siteName, favicon } = strapiGlobal;
   
@@ -88,8 +106,6 @@ const SEO = ({ seo = {} }) => {
   );
 };
 
-export default SEO;
-
 SEO.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
@@ -104,20 +120,7 @@ SEO.defaultProps = {
   article: false,
 };
 
-const query = graphql`
-  query {
-    strapiGlobal {
-      siteName
-      favicon {
-        publicURL
-      }
-      defaultSeo {
-        metaTitle
-        metaDescription
-        shareImage {
-          publicURL
-        }
-      }
-    }
-  }
-`;
+export default SEO;
+
+
+

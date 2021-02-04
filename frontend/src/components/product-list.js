@@ -1,8 +1,9 @@
 import React from "react"
 import { Link } from "gatsby"
 import SharpImage from "./sharp-image"
+import PropTypes from "prop-types";
 
-const ProductList = ({ products, gridCols = "grid-cols-1 md:grid-cols-3" }) => {
+const ProductList = ({ products, gridCols }) => {
   return (
     <div className={`grid ${gridCols} gap-6`}>
       {products.map(product => (
@@ -15,6 +16,15 @@ const ProductList = ({ products, gridCols = "grid-cols-1 md:grid-cols-3" }) => {
       ))}
     </div>
   )
+}
+
+ProductList.propTypes = {
+  products: PropTypes.array,
+  gridCols: PropTypes.string
+}
+
+ProductList.defaultProps = {
+  gridCols: "grid-cols-1 md:grid-cols-3"
 }
 
 export default ProductList

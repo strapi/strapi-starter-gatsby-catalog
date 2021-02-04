@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
 
   return (
     <div className="h-screen">
-      <Header siteTitle={data.strapiGlobal.siteName || `Strapi`} />
+      <Header siteName={data.strapiGlobal.siteName || `Strapi`} />
       <div className="overflow-scroll h-screen">
         <main className="w-4/5 m-auto">{children}</main>
       </div>
