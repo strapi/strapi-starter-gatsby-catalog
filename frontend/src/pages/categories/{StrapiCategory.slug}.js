@@ -8,7 +8,6 @@ const CategoryPage = ({ data }) => {
   const products = data.strapiCategory.products
   const seo = {
     title: data.strapiCategory.name,
-    image: data.strapiCategory.image,
   }
 
   return (

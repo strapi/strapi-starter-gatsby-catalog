@@ -11,7 +11,7 @@ const ProductPage = ({ data }) => {
   const relatedProducts =
     product.relatedProducts && product.relatedProducts.products
 
-  const seo = {title: product.title, image: product.image}
+  const seo = { title: product.title, image: product.image.publicURL }
 
   return (
     <Layout>
@@ -27,7 +27,10 @@ const ProductPage = ({ data }) => {
           <div className="w-full">
             {product.specifications &&
               product.specifications.map((spec, index) => (
-                <div className="w-full flex justify-between items-between border-b mb-2 pb-1" key={`${spec.key}-${index}`}>
+                <div
+                  className="w-full flex justify-between items-between border-b mb-2 pb-1"
+                  key={`${spec.key}-${index}`}
+                >
                   <span>{spec.key}</span>
                   <span>{spec.value}</span>
                 </div>
@@ -67,6 +70,7 @@ export const query = graphql`
       productDescription
       id
       image {
+        publicURL
         childImageSharp {
           fluid(maxWidth: 1024, maxHeight: 768) {
             ...GatsbyImageSharpFluid

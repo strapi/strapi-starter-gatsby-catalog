@@ -16,16 +16,18 @@ const SearchPage = ({
 }) => {
   const [searchQuery, setSearchQuery] = useState("")
   const results = useFlexSearch(searchQuery, index, store)
-  
-  const flatProducts = edges.map(({node}) => node)
+
+  const flatProducts = edges.map(({ node }) => node)
   const products = results.length > 0 ? results : flatProducts
 
-  const seo = {title: "Product Search"}
+  const seo = { title: "Product Search" }
 
   return (
     <Layout>
       <SEO seo={seo} />
-      <h1 className="mb-8 inline-block border-b-2 text-2xl font-normal">Products</h1>
+      <h1 className="mb-8 inline-block border-b-2 text-2xl font-normal">
+        Products
+      </h1>
       <ProductSearch
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
