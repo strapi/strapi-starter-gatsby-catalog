@@ -1,9 +1,4 @@
 module.exports = {
-  siteMetadata: {
-    title: `Strapi Catalog`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
@@ -34,6 +29,7 @@ module.exports = {
         apiURL: `http://localhost:1337`,
         queryLimit: 1000, // Default to 100
         contentTypes: [`product`, `category`],
+        singleTypes: [`global`],
       },
     },
     // You can have multiple instances of this plugin to create indexes with
@@ -68,9 +64,28 @@ module.exports = {
                     key
                     value
                   }
+                  id
                   title
                   slug
                   productDescription
+                  image {
+                    childImageSharp {
+                      fluid(maxWidth: 1024, maxHeight: 768) {
+                        originalImg
+                        originalName
+                        aspectRatio
+                        base64
+                        presentationHeight
+                        presentationWidth
+                        sizes
+                        src
+                        srcSet
+                        srcSetWebp
+                        srcWebp
+                        tracedSVG
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -86,7 +101,7 @@ module.exports = {
         // List of keys to store and make available in your UI. The values of
         // the keys are taken from the normalizer function below.
         // Default: all fields
-        store: ["slug", "title", "productDescription"],
+        store: ["slug", "title", "productDescription", "image", "id"],
         // Function used to map the result from the GraphQL query. This should
         // return an array of items to index in the form of flat objects
         // containing properties to index. The objects must contain the `ref`
@@ -97,6 +112,8 @@ module.exports = {
               title: node.title,
               productDescription: node.productDescription,
               slug: node.slug,
+              image: node.image,
+              id: node.id
             }
           }),
       },

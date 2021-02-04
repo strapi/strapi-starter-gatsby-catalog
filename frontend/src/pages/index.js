@@ -7,11 +7,11 @@ import CategoryList from "../components/category-list"
 
 const IndexPage = ({ data: { allStrapiCategory } }) => {
   const categories = allStrapiCategory.edges
-
+  const seo = {title: "Categories"}
   return (
     <Layout>
-      <SEO title="Home" />
-      <h1 className="mb-8 text-2xl font-normal">Categories</h1>
+      <SEO seo={seo} />
+      <h1 className="mb-8 inline-block border-b-2 text-2xl font-normal">Categories</h1>
       <CategoryList categories={categories} />
     </Layout>
   )
@@ -27,7 +27,7 @@ export const query = graphql`
           slug
           image {
             childImageSharp {
-              fluid(maxWidth: 1280, maxHeight: 720) {
+              fluid(maxWidth: 1024, maxHeight: 768) {
                 ...GatsbyImageSharpFluid
               }
             }

@@ -6,6 +6,7 @@ import { useFlexSearch } from "react-use-flexsearch"
 import Layout from "../../components/layout"
 import ProductSearch from "../../components/product-search"
 import ProductList from "../../components/product-list"
+import SEO from "../../components/seo"
 
 const SearchPage = ({
   data: {
@@ -19,9 +20,12 @@ const SearchPage = ({
   const flatProducts = edges.map(({node}) => node)
   const products = results.length > 0 ? results : flatProducts
 
+  const seo = {title: "Product Search"}
+
   return (
     <Layout>
-      <h1 className="mb-8 text-2xl font-normal">Products</h1>
+      <SEO seo={seo} />
+      <h1 className="mb-8 inline-block border-b-2 text-2xl font-normal">Products</h1>
       <ProductSearch
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
@@ -48,6 +52,13 @@ export const searchPageQuery = graphql`
           slug
           id
           productDescription
+          image {
+            childImageSharp {
+              fluid(maxWidth: 1024, maxHeight: 768) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
       }
     }

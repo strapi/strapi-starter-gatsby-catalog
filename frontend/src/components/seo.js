@@ -1,89 +1,123 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
+import React from "react";
+import PropTypes from "prop-types";
+import { Helmet } from "react-helmet";
+import { useStaticQuery, graphql } from "gatsby";
 
-import React from "react"
-import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+const SEO = ({ seo = {} }) => {
+  const { strapiGlobal } = useStaticQuery(query);
+  const { defaultSeo, siteName, favicon } = strapiGlobal;
+  
+  // Merge default and page-specific SEO values
+  const fullSeo = { ...defaultSeo, ...seo };
+  
+  const getMetaTags = () => {
+    const tags = [];
 
-function SEO({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-          }
+    if (fullSeo.metaTitle) {
+      tags.push(
+        {
+          property: "og:title",
+          content: fullSeo.metaTitle,
+        },
+        {
+          name: "twitter:title",
+          content: fullSeo.metaTitle,
         }
-      }
-    `
-  )
+      );
+    }
+    if (fullSeo.metaDescription) {
+      tags.push(
+        {
+          name: "description",
+          content: fullSeo.metaDescription,
+        },
+        {
+          property: "og:description",
+          content: fullSeo.metaDescription,
+        },
+        {
+          name: "twitter:description",
+          content: fullSeo.metaDescription,
+        }
+      );
+    }
+    if (fullSeo.shareImage) {
+      const imageUrl =
+        (process.env.GATSBY_ROOT_URL || "http://localhost:8000") +
+        fullSeo.shareImage.publicURL;
+      tags.push(
+        {
+          name: "image",
+          content: imageUrl,
+        },
+        {
+          property: "og:image",
+          content: imageUrl,
+        },
+        {
+          name: "twitter:image",
+          content: imageUrl,
+        }
+      );
+    }
+    if (fullSeo.article) {
+      tags.push({
+        property: "og:type",
+        content: "article",
+      });
+    }
+    tags.push({ name: "twitter:card", content: "summary_large_image" });
 
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+    return tags;
+  };
+
+  const metaTags = getMetaTags();
 
   return (
     <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
-      meta={[
+      title={fullSeo.title || fullSeo.metaTitle}
+      titleTemplate={`%s | ${siteName}`}
+      meta={metaTags}
+      link={[
         {
-          name: `description`,
-          content: metaDescription,
+          rel: "icon",
+          href: favicon.publicURL,
         },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata?.author || ``,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
+      ]}
     />
-  )
-}
+  );
+};
 
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-}
+export default SEO;
 
 SEO.propTypes = {
+  title: PropTypes.string,
   description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
-}
+  image: PropTypes.string,
+  article: PropTypes.bool,
+};
 
-export default SEO
+SEO.defaultProps = {
+  title: null,
+  description: null,
+  image: null,
+  article: false,
+};
+
+const query = graphql`
+  query {
+    strapiGlobal {
+      siteName
+      favicon {
+        publicURL
+      }
+      defaultSeo {
+        metaTitle
+        metaDescription
+        shareImage {
+          publicURL
+        }
+      }
+    }
+  }
+`;

@@ -6,10 +6,12 @@ import Img from "gatsby-image"
 const SharpImage = ({image, className}) => {
   const data = useStaticQuery(graphql`
     query {
-      placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1280, maxHeight: 720) {
-            ...GatsbyImageSharpFluid
+      strapiGlobal {
+        placeHolder {
+          childImageSharp {
+            fluid(maxWidth: 1024, maxHeight: 768) {
+              ...GatsbyImageSharpFluid
+            }
           }
         }
       }
@@ -17,10 +19,10 @@ const SharpImage = ({image, className}) => {
   `)
 
   if (!image) {
-    return <Img className="rounded" fluid={data.placeholderImage.childImageSharp.fluid} />
+    return <Img className={className} fluid={data.strapiGlobal.placeHolder.childImageSharp.fluid} />
   }
 
-  return <Img className="rounded" fluid={image.childImageSharp.fluid} />
+  return <Img className={className} fluid={image.childImageSharp.fluid} />
 }
 
 export default SharpImage

@@ -6,7 +6,7 @@ import React from "react"
 const Header = ({ siteTitle }) => {
 
   return (
-    <header className="border-b p-8 mb-12">
+    <header className="border-gray-200 border-b-2 p-8 mb-12">
       <div className="flex flex-col items-center">
         <h1 className="mb-4 font-bold text-4xl">
           {siteTitle}

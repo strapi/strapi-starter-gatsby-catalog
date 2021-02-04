@@ -4,18 +4,22 @@ import { graphql } from "gatsby"
 import SharpImage from "../../components/sharp-image"
 import ReactMarkdown from "react-markdown"
 import ProductList from "../../components/product-list"
+import SEO from "../../components/seo"
 
 const ProductPage = ({ data }) => {
   const product = data.strapiProduct
   const relatedProducts =
     product.relatedProducts && product.relatedProducts.products
 
+  const seo = {title: product.title, image: product.image}
+
   return (
     <Layout>
+      <SEO seo={seo} />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
         {product.image && (
           <div className="md:col-span-2">
-            <SharpImage className="rounded" image={product.image} />
+            <SharpImage className="rounded-md" image={product.image} />
           </div>
         )}
         <div className="flex flex-col justify-between">
@@ -29,8 +33,8 @@ const ProductPage = ({ data }) => {
                 </div>
               ))}
           </div>
-          <button className="p-4 rounded border-2 mt-4">
-            Shop Dealer's Online
+          <button className="p-4 rounded-md border-2 mt-4">
+            Shop Dealers Online
           </button>
         </div>
       </div>
@@ -64,7 +68,7 @@ export const query = graphql`
       id
       image {
         childImageSharp {
-          fluid(maxWidth: 1280, maxHeight: 720) {
+          fluid(maxWidth: 1024, maxHeight: 768) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -79,7 +83,7 @@ export const query = graphql`
           id
           image {
             childImageSharp {
-              fluid(maxWidth: 1280, maxHeight: 720) {
+              fluid(maxWidth: 1024, maxHeight: 768) {
                 ...GatsbyImageSharpFluid
               }
             }

@@ -6,8 +6,8 @@ const ProductSearch = ({ searchQuery, setSearchQuery }) => (
       value={searchQuery}
       onChange={e => setSearchQuery(e.target.value)}
       type="text"
-      placeholder="Search Products"
-      className="border-2 rounded w-1/2 p-2 focus:outline-none"
+      placeholder="Search"
+      className="border-2 rounded-md w-full md:w-1/2 p-2 focus:outline-none"
     />
   </div>
 )

@@ -6,27 +6,20 @@ import Header from "./header"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
+    query SiteNameQuery {
+      strapiGlobal {
+        siteName
       }
     }
   `)
 
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div className="overflow-scroll">
+    <div className="h-screen">
+      <Header siteTitle={data.strapiGlobal.siteName || `Strapi`} />
+      <div className="overflow-scroll h-screen">
         <main className="w-4/5 m-auto">{children}</main>
-        <footer className="mt-2">
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
       </div>
-    </>
+    </div>
   )
 }
 
