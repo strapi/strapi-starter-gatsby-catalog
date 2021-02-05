@@ -1,14 +1,20 @@
+const { colors } = require(`tailwindcss/defaultTheme`)
+
 module.exports = {
-  purge: ['./src/**/*.{js,jsx,ts,tsx}'],
+  purge: ["./src/**/*.{js,jsx,ts,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: colors.indigo,
+      },
+    },
     fontFamily: {
-      serif: ['georgia', 'serif'],
+      serif: ["georgia", "serif"],
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [require('@tailwindcss/typography'),],
+  plugins: [require("@tailwindcss/typography")],
 }

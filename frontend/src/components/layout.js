@@ -14,11 +14,14 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <div className="h-screen">
+    <div className="flex flex-col bg-gray-50 min-h-screen">
       <Header siteName={data.strapiGlobal.siteName || `Strapi`} />
-      <div className="overflow-scroll h-screen">
+      <div className="flex-1">
         <main className="w-4/5 m-auto">{children}</main>
       </div>
+      <footer>
+        Pickle
+      </footer>
     </div>
   )
 }

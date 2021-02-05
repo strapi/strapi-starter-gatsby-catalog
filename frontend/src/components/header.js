@@ -6,7 +6,7 @@ import React from "react"
 const Header = ({ siteName }) => {
 
   return (
-    <header className="border-gray-200 border-b p-8 mb-12">
+    <header className="p-8 mb-12">
       <div className="flex flex-col items-center">
         <h1 className="mb-4 font-bold text-4xl">
           {siteName}
@@ -16,6 +16,7 @@ const Header = ({ siteName }) => {
           <Link className="mx-2 text-lg" to='/products'>Search products</Link>
         </div>
       </div>
+      <hr className="mt-6 m-auto w-24 border-t-4" />
     </header>
   )
 }

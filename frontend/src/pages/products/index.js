@@ -51,6 +51,7 @@ export const searchPageQuery = graphql`
             value
           }
           title
+          price
           slug
           id
           productDescription
