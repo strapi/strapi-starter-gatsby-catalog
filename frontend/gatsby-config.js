@@ -66,6 +66,7 @@ module.exports = {
                   }
                   id
                   title
+                  price
                   slug
                   productDescription
                   image {

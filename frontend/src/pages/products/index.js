@@ -19,7 +19,7 @@ const SearchPage = ({
 
   const flatProducts = edges.map(({ node }) => node)
   const products = results.length > 0 ? results : flatProducts
-
+  
   const seo = { title: "Product Search" }
 
   return (

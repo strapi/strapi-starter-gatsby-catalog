@@ -26,9 +26,8 @@ const ProductPage = ({ data }) => {
           </div>
         )}
         <div className={`flex flex-col justify-${flexJustify}`}>
-          <div>
-            <h1 className="text-4xl">{product.title}</h1>
-
+          <div className="mb-4">
+            <h1 className="text-4xl mb-1">{product.title}</h1>
             {product.price && (
               <div className="text-sm flex justify-between">
                 <p className="font-extralight">
@@ -51,7 +50,7 @@ const ProductPage = ({ data }) => {
               ))}
           </div>
           <a href={product.dealerUrl} target="_blank" rel="noreferrer" className="p-4 text-center font-medium rounded-md border-2 mt-4">
-            See Dealer Website
+            Shop Online
           </a>
         </div>
       </div>

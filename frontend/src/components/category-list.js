@@ -10,7 +10,7 @@ const CategoryList = ({ categories }) => (
         <div className="mb-14 shadow-lg rounded-md" key={node.id}>
           <Link to={`/categories/${node.slug}`}>
             <SharpImage className="rounded-t-md" image={node.image} />
-            <p className="lowercase px-4 py-6">{node.name}</p>
+            <p className="px-4 py-6">{node.name}</p>
           </Link>
         </div>
       )

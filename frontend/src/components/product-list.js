@@ -8,7 +8,6 @@ const ProductList = ({ products, gridCols }) => {
   return (
     <div className={`grid ${gridCols} gap-6`}>
       {products.map(product => {
-
         return (
           <div key={product.id} className="mb-14 shadow-lg rounded-md">
             <Link to={`/products/${product.slug}`} key={product.id}>

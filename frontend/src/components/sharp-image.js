@@ -1,8 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
-import PropTypes from "prop-types";
-
+import PropTypes from "prop-types"
 
 const SharpImage = ({ image, className }) => {
   const data = useStaticQuery(graphql`
@@ -28,12 +27,18 @@ const SharpImage = ({ image, className }) => {
     )
   }
 
-  return <Img className={className} fluid={image.childImageSharp.fluid} />
+  return (
+    <Img
+      className={className}
+      fluid={image.childImageSharp.fluid}
+      imgStyle={{ objectFit: 'contain' }}
+    />
+  )
 }
 
 SharpImage.propTypes = {
   image: PropTypes.object,
-  className: PropTypes.string
-};
+  className: PropTypes.string,
+}
 
 export default SharpImage
