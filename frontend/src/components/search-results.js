@@ -4,7 +4,7 @@ import PageHeading from "./styled/page-heading"
 
 const SearchResults = ({ results }) => {
   return (
-    <div className="border-b-2 mb-12">
+    <div className="border-b-2">
       <PageHeading>Search Results</PageHeading>
       <ProductList products={results} />
     </div>
