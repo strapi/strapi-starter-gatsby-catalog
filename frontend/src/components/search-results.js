@@ -1,12 +1,11 @@
 import React from "react"
 import ProductList from "./product-list"
+import PageHeading from "./styled/page-heading"
 
 const SearchResults = ({ results }) => {
   return (
-    <div>
-      <h1 className="mb-10 inline-block border-b-2 text-2xl font-medium">
-        Search Results
-      </h1>
+    <div className="border-b-2 mb-12">
+      <PageHeading>Search Results</PageHeading>
       <ProductList products={results} />
     </div>
   )

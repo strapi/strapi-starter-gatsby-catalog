@@ -4,6 +4,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import CategoryList from "../components/category-list"
+import PageHeading from "../components/styled/page-heading"
 
 const IndexPage = ({ data: { allStrapiCategory } }) => {
   const categories = allStrapiCategory.edges
@@ -11,9 +12,9 @@ const IndexPage = ({ data: { allStrapiCategory } }) => {
   return (
     <Layout>
       <SEO seo={seo} />
-      <h1 className="mb-10 inline-block border-b-2 text-2xl font-medium">
+      <PageHeading>
         Categories
-      </h1>
+      </PageHeading>
       <CategoryList categories={categories} />
     </Layout>
   )
