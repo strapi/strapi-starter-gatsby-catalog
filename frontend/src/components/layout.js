@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import { useFlexSearch } from "react-use-flexsearch"
 
 import ProductSearch from "./product-search"
-import ProductList from "./product-list"
+import SearchResults from "./search-results"
 import Footer from "./footer"
 
 import Header from "./header"
@@ -38,18 +38,9 @@ const Layout = ({ children }) => {
           setSearchQuery={setSearchQuery}
         />
         <main className="flex-1">
-          {results.length > 0 ? (
-            <div>
-              <h1 className="mb-10 inline-block border-b-2 text-2xl font-medium">
-                Search Results
-              </h1>
-              <ProductList products={results} />
-            </div>
-          ) : (
-            children
-          )}
+          {results.length > 0 ? <SearchResults results={results} /> : children}
         </main>
-        <Footer /> 
+        <Footer />
       </div>
     </div>
   )
