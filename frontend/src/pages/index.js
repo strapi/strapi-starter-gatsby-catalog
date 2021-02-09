@@ -11,7 +11,7 @@ const IndexPage = ({ data: { allStrapiCategory } }) => {
   return (
     <Layout>
       <SEO seo={seo} />
-      <h1 className="mb-8 inline-block border-b-2 text-2xl font-normal">
+      <h1 className="mb-10 inline-block border-b-2 text-2xl font-medium">
         Categories
       </h1>
       <CategoryList categories={categories} />

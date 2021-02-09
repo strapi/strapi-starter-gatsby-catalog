@@ -9,10 +9,10 @@ const ProductList = ({ products, gridCols }) => {
     <div className={`grid ${gridCols} gap-6`}>
       {products.map(product => {
         return (
-          <div key={product.id} className="mb-14 shadow-lg rounded-md">
+          <div key={product.id} className="mb-14 shadow-lg bg-white rounded-md">
             <Link to={`/products/${product.slug}`} key={product.id}>
-              <SharpImage className="rounded-t-md" image={product.image} />
-              <div className="px-4 py-6 ">
+              <SharpImage className="rounded-t-md border-gray-200	 border-b" image={product.image} />
+              <div className="px-4 py-6">
                 <p>{product.title}</p>
                 <p className="text-xs self-end">{product.price && formatPrice(product.price)}</p>
               </div>

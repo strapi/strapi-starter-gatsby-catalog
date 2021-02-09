@@ -19,9 +19,9 @@ const ProductPage = ({ data }) => {
   return (
     <Layout>
       <SEO seo={seo} />
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24 mt-4">
         {product.image && (
-          <div className="md:col-span-2">
+          <div className="md:col-span-2 md:pr-4">
             <SharpImage className="rounded-md" image={product.image} />
           </div>
         )}
@@ -64,7 +64,7 @@ const ProductPage = ({ data }) => {
       </div>
       {relatedProducts && (
         <div className="flex flex-col my-6 mb-24">
-          <h1 className="text-4xl font-bold text-center">Related Products</h1>
+          <h2 className="text-3xl font-bold text-center">Related Products</h2>
           <hr className="mt-6 mb-12 m-auto w-24 border-t-4" />
           <ProductList
             products={relatedProducts}

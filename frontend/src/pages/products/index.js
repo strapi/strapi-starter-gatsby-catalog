@@ -1,48 +1,33 @@
-import React, { useState } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 
-import { useFlexSearch } from "react-use-flexsearch"
-
 import Layout from "../../components/layout"
-import ProductSearch from "../../components/product-search"
+
 import ProductList from "../../components/product-list"
 import SEO from "../../components/seo"
 
 const SearchPage = ({
   data: {
-    localSearchPages: { index, store },
     allStrapiProduct: { edges },
   },
 }) => {
-  const [searchQuery, setSearchQuery] = useState("")
-  const results = useFlexSearch(searchQuery, index, store)
-
   const flatProducts = edges.map(({ node }) => node)
-  const products = results.length > 0 ? results : flatProducts
-  
-  const seo = { title: "Product Search" }
+
+  const seo = { title: "Products" }
 
   return (
     <Layout>
       <SEO seo={seo} />
-      <h1 className="mb-8 inline-block border-b-2 text-2xl font-normal">
+      <h1 className="mb-10 inline-block border-b-2 text-2xl font-medium">
         Products
       </h1>
-      <ProductSearch
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-      />
-      <ProductList products={products} />
+      <ProductList products={flatProducts} />
     </Layout>
   )
 }
 
 export const searchPageQuery = graphql`
   query ProductSearchQuery {
-    localSearchPages {
-      index
-      store
-    }
     allStrapiProduct {
       edges {
         node {

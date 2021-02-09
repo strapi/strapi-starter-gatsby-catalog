@@ -14,7 +14,7 @@ const CategoryPage = ({ data }) => {
     <Layout>
       <SEO seo={seo} />
       <div>
-        <h1 className="mb-8 inline-block border-b-2 text-2xl font-normal">
+        <h1 className="mb-10 inline-block border-b-2 text-2xl font-medium">
           {data.strapiCategory.name}
         </h1>
         <ProductList products={products} />

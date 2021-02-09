@@ -7,7 +7,7 @@ const CategoryList = ({ categories }) => (
   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
     {categories.map(({ node }) => {
       return (
-        <div className="mb-14 shadow-lg rounded-md" key={node.id}>
+        <div className="mb-14 bg-white shadow-lg rounded-md" key={node.id}>
           <Link to={`/categories/${node.slug}`}>
             <SharpImage className="rounded-t-md" image={node.image} />
             <p className="px-4 py-6">{node.name}</p>

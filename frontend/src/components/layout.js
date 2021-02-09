@@ -1,9 +1,12 @@
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import github from "../images/github.svg"
-import twitter from "../images/twitter.svg"
-import facebook from "../images/facebook.svg"
+
+import { useFlexSearch } from "react-use-flexsearch"
+
+import ProductSearch from "./product-search"
+import ProductList from "./product-list"
+import Footer from "./footer"
 
 import Header from "./header"
 
@@ -13,33 +16,40 @@ const Layout = ({ children }) => {
       strapiGlobal {
         siteName
       }
+      localSearchPages {
+        index
+        store
+      }
     }
   `)
+
+  const {
+    localSearchPages: { index, store },
+  } = data
+  const [searchQuery, setSearchQuery] = useState("")
+  const results = useFlexSearch(searchQuery, index, store)
 
   return (
     <div className="bg-gray-50">
       <Header siteName={data.strapiGlobal.siteName || `Strapi`} />
       <div className="flex flex-col w-4/5 m-auto min-h-screen">
-        <main className="flex-1">{children}</main>
-        <footer className="flex justify-between pb-4">
-          <p className="text-sm font-semibold text-gray-600">
-            Strapi Starter Gatsby Catalog
-          </p>
-          <div className="flex gap-3 ml-4">
-            <a href="https://twitter.com/strapijs" className="max-w-xs ml-4">
-              <img src={twitter} alt="Twitter" />
-            </a>
-            <a href="https://facebook.com/strapijs" className="ml-3">
-              <img src={facebook} alt="Facebook" />
-            </a>
-            <a
-              href="https://github.com/strapi/strapi-starter-gatsby-catalog"
-              className="ml-3"
-            >
-              <img src={github} alt="GitHub" />
-            </a>
-          </div>
-        </footer>
+        <ProductSearch
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+        />
+        <main className="flex-1">
+          {results.length > 0 ? (
+            <div>
+              <h1 className="mb-10 inline-block border-b-2 text-2xl font-medium">
+                Search Results
+              </h1>
+              <ProductList products={results} />
+            </div>
+          ) : (
+            children
+          )}
+        </main>
+        <Footer /> 
       </div>
     </div>
   )
