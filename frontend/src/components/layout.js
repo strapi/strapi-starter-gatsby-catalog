@@ -37,8 +37,9 @@ const Layout = ({ children }) => {
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
         />
+        {results.length > 0 && <SearchResults results={results} />}
         <main className="flex-1">
-          {results.length > 0 ? <SearchResults results={results} /> : children}
+          {children}
         </main>
         <Footer />
       </div>
