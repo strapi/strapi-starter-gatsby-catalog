@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
@@ -31,6 +31,8 @@ const Layout = ({ children }) => {
   const hasResults = results.length > 0
   const hasNoResults = searchQuery.length > 0 && results.length === 0
 
+
+
   return (
     <div className="bg-gray-50">
       <Header siteName={data.strapiGlobal.siteName || `Strapi`} />
@@ -40,8 +42,8 @@ const Layout = ({ children }) => {
           setSearchQuery={setSearchQuery}
         />
         {hasResults && (
-          <div className="mt-12">
-            <SearchResults results={results} />
+          <div className="mt-4">
+            <SearchResults results={results} setSearchQuery={setSearchQuery} />
           </div>
         )}
         {hasNoResults && (
