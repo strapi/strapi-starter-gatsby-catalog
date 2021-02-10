@@ -9,8 +9,6 @@ import { formatPrice } from '../../helpers/currency-formatter'
 
 const ProductPage = ({ data }) => {
   const product = data.strapiProduct
-  const relatedProducts =
-    product.relatedProducts && product.relatedProducts.products
 
   const seo = { title: product.title, image: product.image.publicURL }
 
@@ -59,15 +57,15 @@ const ProductPage = ({ data }) => {
         <hr className="mt-6 mb-12 m-auto w-24 border-t-4" />
         <ReactMarkdown
           className="prose md:w-4/5 m-auto"
-          children={product.productDescription}
+          children={product.description}
         />
       </div>
-      {relatedProducts && (
+      {product.relatedProducts.length > 0 && (
         <div className="flex flex-col my-6 mb-24">
           <h2 className="text-3xl font-bold text-center">Related Products</h2>
           <hr className="mt-6 mb-12 m-auto w-24 border-t-4" />
           <ProductList
-            products={relatedProducts}
+            products={product.relatedProducts}
             gridCols="grid-cols-1 md:grid-cols-2"
           />
         </div>
@@ -80,7 +78,7 @@ export const query = graphql`
   query ProductQuery($slug: String!) {
     strapiProduct(slug: { eq: $slug }) {
       title
-      productDescription
+      description
       id
       price
       dealerUrl
@@ -96,17 +94,15 @@ export const query = graphql`
         key
         value
       }
-      relatedProducts {
-        products {
-          title
-          price
-          id
-          slug
-          image {
-            childImageSharp {
-              fluid(maxWidth: 1024, maxHeight: 768) {
-                ...GatsbyImageSharpFluid
-              }
+      relatedProducts { 
+        title
+        price
+        id
+        slug
+        image {
+          childImageSharp {
+            fluid(maxWidth: 1024, maxHeight: 768) {
+              ...GatsbyImageSharpFluid
             }
           }
         }

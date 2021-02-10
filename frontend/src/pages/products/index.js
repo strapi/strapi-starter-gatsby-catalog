@@ -40,7 +40,7 @@ export const searchPageQuery = graphql`
           price
           slug
           id
-          productDescription
+          description
           image {
             childImageSharp {
               fluid(maxWidth: 1024, maxHeight: 768) {
