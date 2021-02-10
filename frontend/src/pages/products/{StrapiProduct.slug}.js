@@ -57,7 +57,7 @@ const ProductPage = ({ data }) => {
         <hr className="mt-6 mb-12 m-auto w-24 border-t-4" />
         <ReactMarkdown
           className="prose md:w-4/5 m-auto"
-          children={product.productDescription}
+          children={product.description}
         />
       </div>
       {product.relatedProducts.length > 0 && (
@@ -78,7 +78,7 @@ export const query = graphql`
   query ProductQuery($slug: String!) {
     strapiProduct(slug: { eq: $slug }) {
       title
-      productDescription
+      description
       id
       price
       dealerUrl
