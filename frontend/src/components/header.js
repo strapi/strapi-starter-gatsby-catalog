@@ -1,13 +1,14 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import StrapiLogo from "../images/strapi.png"
 
-const Header = ({ siteName }) => {
+const Header = () => {
   return (
     <header className="p-8">
       <div className="flex flex-col items-center">
-        <Link className="mx-2 text-lg" to="/">
-          <h1 className="mb-4 font-bold text-4xl">{siteName}</h1>
+        <Link className="mx-2 text-lg w-40 mb-4" to="/">
+          <img src={StrapiLogo} alt="strapi catalog logo" />
         </Link>
         <div>
           <Link className="mx-2 text-lg" to="/">
