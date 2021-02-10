@@ -1,18 +1,20 @@
 import React from "react"
 import { Link } from "gatsby"
 import SharpImage from "./sharp-image"
-import PropTypes from "prop-types";
+import PropTypes from "prop-types"
+
+import Card from "./styled/card"
 
 const CategoryList = ({ categories }) => (
   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
     {categories.map(({ node }) => {
       return (
-        <div className="mb-14 bg-white shadow-lg rounded-md" key={node.id}>
+        <Card key={node.id}>
           <Link to={`/categories/${node.slug}`}>
             <SharpImage className="rounded-t-md" image={node.image} />
             <p className="px-4 py-6">{node.name}</p>
           </Link>
-        </div>
+        </Card>
       )
     })}
   </div>

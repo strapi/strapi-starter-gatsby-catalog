@@ -1,8 +1,10 @@
 import React from "react"
-import Layout from "../../components/layout"
-import ProductList from "../../components/product-list"
 import SEO from "../../components/seo"
 import { graphql } from "gatsby"
+
+import Layout from "../../components/layout"
+import ProductList from "../../components/product-list"
+import PageHeading from "../../components/styled/page-heading"
 
 const CategoryPage = ({ data }) => {
   const products = data.strapiCategory.products
@@ -14,9 +16,9 @@ const CategoryPage = ({ data }) => {
     <Layout>
       <SEO seo={seo} />
       <div>
-        <h1 className="mb-10 inline-block border-b-2 text-2xl font-medium">
+        <PageHeading>
           {data.strapiCategory.name}
-        </h1>
+        </PageHeading>
         <ProductList products={products} />
       </div>
     </Layout>
@@ -30,6 +32,7 @@ export const query = graphql`
       products {
         title
         slug
+        price
         id
         image {
           childImageSharp {

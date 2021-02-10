@@ -28,6 +28,8 @@ const Layout = ({ children }) => {
   } = data
   const [searchQuery, setSearchQuery] = useState("")
   const results = useFlexSearch(searchQuery, index, store)
+  const hasResults = results.length > 0
+  const hasNoResults = searchQuery.length > 0 && results.length === 0
 
   return (
     <div className="bg-gray-50">
@@ -37,9 +39,17 @@ const Layout = ({ children }) => {
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
         />
-        <main className="flex-1">
-          {results.length > 0 ? <SearchResults results={results} /> : children}
-        </main>
+        {hasResults && (
+          <div className="mt-12">
+            <SearchResults results={results} />
+          </div>
+        )}
+        {hasNoResults && (
+          <p className="italic text-sm font-light mt-2">
+            Your search didn't return any results
+          </p>
+        )}
+        <main className="flex-1 mt-12">{children}</main>
         <Footer />
       </div>
     </div>

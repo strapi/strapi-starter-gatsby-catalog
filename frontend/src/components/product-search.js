@@ -4,7 +4,7 @@ import SearchIcon from "../images/search-icon.svg"
 
 const ProductSearch = ({ searchQuery, setSearchQuery }) => {
   return (
-    <div className="w-full flex justify-center mb-12">
+    <div className="w-full flex justify-center">
       <img src={SearchIcon} className="w-5 border-b-2" alt="Search Icon" />
       <input
         value={searchQuery}

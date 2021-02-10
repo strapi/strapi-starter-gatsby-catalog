@@ -5,6 +5,7 @@ import Layout from "../../components/layout"
 
 import ProductList from "../../components/product-list"
 import SEO from "../../components/seo"
+import PageHeading from "../../components/styled/page-heading"
 
 const SearchPage = ({
   data: {
@@ -18,9 +19,9 @@ const SearchPage = ({
   return (
     <Layout>
       <SEO seo={seo} />
-      <h1 className="mb-10 inline-block border-b-2 text-2xl font-medium">
+      <PageHeading>
         Products
-      </h1>
+      </PageHeading>
       <ProductList products={flatProducts} />
     </Layout>
   )
