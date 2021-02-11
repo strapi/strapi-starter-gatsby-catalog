@@ -34,7 +34,7 @@ const Layout = ({ children }) => {
   return (
     <div className="bg-gray-50">
       <Header siteName={data.strapiGlobal.siteName || `Strapi`} />
-      <div className="flex flex-col w-4/5 m-auto min-h-screen">
+      <div className="flex flex-col max-w-screen-lg m-auto min-h-screen p-10">
         <ProductSearch
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
