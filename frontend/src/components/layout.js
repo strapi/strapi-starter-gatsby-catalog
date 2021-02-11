@@ -1,10 +1,6 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-
-import { useFlexSearch } from "react-use-flexsearch"
-
-import ProductSearch from "./product-search"
 import SearchResults from "./search-results"
 import Footer from "./footer"
 
@@ -16,44 +12,26 @@ const Layout = ({ children }) => {
       strapiGlobal {
         siteName
       }
-      localSearchPages {
-        index
-        store
-      }
     }
   `)
 
-  const {
-    localSearchPages: { index, store },
-  } = data
-  const [searchQuery, setSearchQuery] = useState("")
-  const results = useFlexSearch(searchQuery, index, store)
-  const hasResults = results.length > 0
-  const hasNoResults = searchQuery.length > 0 && results.length === 0
-
-
-
+  const [openModal, setOpenModal] = useState(false)
+  
   return (
-    <div className="bg-gray-50">
-      <Header siteName={data.strapiGlobal.siteName || `Strapi`} />
+    <div className="bg-gray-50 relative">
+      <Header
+        setOpenModal={setOpenModal}
+        siteName={data.strapiGlobal.siteName || `Strapi`}
+      />
       <div className="flex flex-col max-w-screen-lg m-auto min-h-screen p-10">
-        <ProductSearch
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-        />
-        {hasResults && (
-          <div className="mt-4">
-            <SearchResults results={results} setSearchQuery={setSearchQuery} />
-          </div>
-        )}
-        {hasNoResults && (
-          <p className="italic text-sm font-light mt-2">
-            Your search didn't return any results
-          </p>
-        )}
-        <main className="flex-1 mt-12">{children}</main>
+        <main className="flex-1">{children}</main>
         <Footer />
       </div>
+      {openModal && (
+        <div className="h-screen max-w-screen-lg m-auto fixed bottom-0 top-0 right-0 left-0 px-4 py-10 md:p-10">
+          <SearchResults setOpenModal={setOpenModal} openModal={openModal} />
+        </div>
+      )}
     </div>
   )
 }
