@@ -51,7 +51,7 @@ module.exports = {
         engineOptions: {
           profile: "speed",
           // Partial search moving forward
-          tokenize: "forward"
+          tokenize: "forward",
         },
         // GraphQL query used to fetch all data for the search index. This is
         // required.
@@ -115,7 +115,7 @@ module.exports = {
               slug: node.slug,
               image: node.image,
               id: node.id,
-              price: node.price
+              price: node.price,
             }
           }),
       },

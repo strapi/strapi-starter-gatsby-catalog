@@ -31,7 +31,7 @@ const SharpImage = ({ image, className }) => {
     <Img
       className={className}
       fluid={image.childImageSharp.fluid}
-      imgStyle={{ objectFit: 'contain' }}
+      imgStyle={{ objectFit: "contain" }}
     />
   )
 }

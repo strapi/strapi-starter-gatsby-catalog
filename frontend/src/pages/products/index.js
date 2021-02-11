@@ -19,9 +19,7 @@ const SearchPage = ({
   return (
     <Layout>
       <SEO seo={seo} />
-      <PageHeading>
-        Products
-      </PageHeading>
+      <PageHeading>Products</PageHeading>
       <ProductList products={flatProducts} />
     </Layout>
   )
