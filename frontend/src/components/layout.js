@@ -1,10 +1,6 @@
 import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-
-import { useFlexSearch } from "react-use-flexsearch"
-
-import ProductSearch from "./product-search"
 import SearchResults from "./search-results"
 import Footer from "./footer"
 
@@ -16,42 +12,26 @@ const Layout = ({ children }) => {
       strapiGlobal {
         siteName
       }
-      localSearchPages {
-        index
-        store
-      }
     }
   `)
 
-  const {
-    localSearchPages: { index, store },
-  } = data
-  const [searchQuery, setSearchQuery] = useState("")
-  const results = useFlexSearch(searchQuery, index, store)
-  const hasResults = results.length > 0
-  const hasNoResults = searchQuery.length > 0 && results.length === 0
-
+  const [openModal, setOpenModal] = useState(false)
+  
   return (
-    <div className="bg-gray-50">
-      <Header siteName={data.strapiGlobal.siteName || `Strapi`} />
-      <div className="flex flex-col max-w-screen-lg m-auto min-h-screen p-10">
-        <ProductSearch
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-        />
-        {hasResults && (
-          <div className="mt-12">
-            <SearchResults results={results} />
-          </div>
-        )}
-        {hasNoResults && (
-          <p className="italic text-sm font-light mt-2">
-            Your search didn't return any results
-          </p>
-        )}
-        <main className="flex-1 mt-12">{children}</main>
+    <div className="bg-gray-50 relative">
+      <Header
+        setOpenModal={setOpenModal}
+        siteName={data.strapiGlobal.siteName || `Strapi`}
+      />
+      <div className="flex flex-col max-w-screen-lg m-auto min-h-screen p-6 md:p-10">
+        <main className="flex-1">{children}</main>
         <Footer />
       </div>
+      {openModal && (
+        <div className="h-screen max-w-screen-lg m-auto fixed bottom-0 top-0 right-0 left-0 px-6 pb-10 pt-20 md:p-10 md:pt-40">
+          <SearchResults setOpenModal={setOpenModal} openModal={openModal} />
+        </div>
+      )}
     </div>
   )
 }
