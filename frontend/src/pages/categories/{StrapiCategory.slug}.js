@@ -16,9 +16,7 @@ const CategoryPage = ({ data }) => {
     <Layout>
       <SEO seo={seo} />
       <div>
-        <PageHeading>
-          {data.strapiCategory.name}
-        </PageHeading>
+        <PageHeading>{data.strapiCategory.name}</PageHeading>
         <ProductList products={products} />
       </div>
     </Layout>

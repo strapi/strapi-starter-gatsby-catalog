@@ -5,14 +5,14 @@ import SharpImage from "../../components/sharp-image"
 import ReactMarkdown from "react-markdown"
 import ProductList from "../../components/product-list"
 import SEO from "../../components/seo"
-import { formatPrice } from '../../helpers/currency-formatter'
+import { formatPrice } from "../../helpers/currency-formatter"
 
 const ProductPage = ({ data }) => {
   const product = data.strapiProduct
 
   const seo = { title: product.title, image: product.image.publicURL }
 
-  const flexJustify = product.specifications.length > 0 ? 'between' : 'center'
+  const flexJustify = product.specifications.length > 0 ? "between" : "center"
 
   return (
     <Layout>
@@ -28,9 +28,7 @@ const ProductPage = ({ data }) => {
             <h1 className="text-4xl mb-1">{product.title}</h1>
             {product.price && (
               <div className="text-sm flex justify-between">
-                <p className="font-extralight">
-                  Price
-                </p>
+                <p className="font-extralight">Price</p>
                 <p>{formatPrice(product.price)}</p>
               </div>
             )}
@@ -47,7 +45,12 @@ const ProductPage = ({ data }) => {
                 </div>
               ))}
           </div>
-          <a href={product.dealerUrl} target="_blank" rel="noreferrer" className="p-4 text-center font-medium rounded-md border-2 mt-4">
+          <a
+            href={product.dealerUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="p-4 text-center font-medium rounded-md border-2 mt-4"
+          >
             Shop Online
           </a>
         </div>
@@ -94,7 +97,7 @@ export const query = graphql`
         key
         value
       }
-      relatedProducts { 
+      relatedProducts {
         title
         price
         id

@@ -1,35 +1,34 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Helmet } from "react-helmet";
-import { useStaticQuery, graphql } from "gatsby";
+import React from "react"
+import PropTypes from "prop-types"
+import { Helmet } from "react-helmet"
+import { useStaticQuery, graphql } from "gatsby"
 
 const SEO = ({ seo = {} }) => {
-
   const query = graphql`
-  query {
-    strapiGlobal {
-      siteName
-      favicon {
-        publicURL
-      }
-      defaultSeo {
-        metaTitle
-        metaDescription
-        shareImage {
+    query {
+      strapiGlobal {
+        siteName
+        favicon {
           publicURL
+        }
+        defaultSeo {
+          metaTitle
+          metaDescription
+          shareImage {
+            publicURL
+          }
         }
       }
     }
-  }
-`;
-  const { strapiGlobal } = useStaticQuery(query);
-  const { defaultSeo, siteName, favicon } = strapiGlobal;
-  
+  `
+  const { strapiGlobal } = useStaticQuery(query)
+  const { defaultSeo, siteName, favicon } = strapiGlobal
+
   // Merge default and page-specific SEO values
-  const fullSeo = { ...defaultSeo, ...seo };
-  
+  const fullSeo = { ...defaultSeo, ...seo }
+
   const getMetaTags = () => {
-    const tags = [];
+    const tags = []
 
     if (fullSeo.metaTitle) {
       tags.push(
@@ -41,7 +40,7 @@ const SEO = ({ seo = {} }) => {
           name: "twitter:title",
           content: fullSeo.metaTitle,
         }
-      );
+      )
     }
     if (fullSeo.metaDescription) {
       tags.push(
@@ -57,12 +56,12 @@ const SEO = ({ seo = {} }) => {
           name: "twitter:description",
           content: fullSeo.metaDescription,
         }
-      );
+      )
     }
     if (fullSeo.shareImage) {
       const imageUrl =
         (process.env.GATSBY_ROOT_URL || "http://localhost:8000") +
-        fullSeo.shareImage.publicURL;
+        fullSeo.shareImage.publicURL
       tags.push(
         {
           name: "image",
@@ -76,20 +75,20 @@ const SEO = ({ seo = {} }) => {
           name: "twitter:image",
           content: imageUrl,
         }
-      );
+      )
     }
     if (fullSeo.article) {
       tags.push({
         property: "og:type",
         content: "article",
-      });
+      })
     }
-    tags.push({ name: "twitter:card", content: "summary_large_image" });
+    tags.push({ name: "twitter:card", content: "summary_large_image" })
 
-    return tags;
-  };
+    return tags
+  }
 
-  const metaTags = getMetaTags();
+  const metaTags = getMetaTags()
 
   return (
     <Helmet
@@ -103,20 +102,17 @@ const SEO = ({ seo = {} }) => {
         },
       ]}
     />
-  );
-};
+  )
+}
 
 SEO.propTypes = {
   title: PropTypes.string,
   image: PropTypes.string,
-};
+}
 
 SEO.defaultProps = {
   title: null,
   image: null,
-};
+}
 
-export default SEO;
-
-
-
+export default SEO
