@@ -1,10 +1,14 @@
 # Strapi Starter Gatsby Catalog [WIP]
 
-This starter allows you to create a Catalog using Gatsby with a Strapi backend.  The example uses musical instruments, but it could be used with any product and could be customized for many different use cases.  This is an open source project open to contributions.  Feel free to add features and report bugs.
+This starter allows you to create a Catalog using Gatsby with a Strapi backend. This starter, and its associated template, uses musical instruments as sample seed data, but it could be customized for any product.
+
+This is an open source project. Feel free contribute by adding features and reporting bugs.
 
 ## Features
-- 2 Components (Specifications, Related Products)
+
 - 2 Collection types: Product, Catgory
+- Specifications component for products
+- Related products
 - Local Search using [gatsby-plugin-local-search](https://www.gatsbyjs.com/plugins/gatsby-plugin-local-search/)
 - Responsive design using Tailwind CSS
 
@@ -12,7 +16,7 @@ This starter allows you to create a Catalog using Gatsby with a Strapi backend. 
 
 The easiest way to try this starter is to run it locally on your computer.
 
-First, you'll need to create your own copy of this starter. You can do so by clicking [the "Use this template" button](https://github.com/strapi/strapi-starter-gatsby-catalog/generate) on GitHub, and filling the [form](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template)
+First, you will need to create your own copy of the starter by clicking [the "Use this template" button](https://github.com/strapi/strapi-starter-gatsby-catalog/generate) on GitHub, and completing the [form](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template)
 
 ### Backend
 
