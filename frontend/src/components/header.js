@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import StrapiLogo from "../images/strapi.png"
 
-const Header = ({ setOpenModal }) => { 
+const Header = ({ setOpenModal }) => {
   return (
     <header className="p-8">
       <div className="flex flex-col items-center">
@@ -17,7 +17,12 @@ const Header = ({ setOpenModal }) => {
           <Link className="mx-2 mb-2 md:mb-0 text-lg" to="/products">
             Products
           </Link>
-          <button className="mx-2 mb-2 md:mb-0 text-lg" onClick={() => setOpenModal(true)}>Search</button>
+          <button
+            className="mx-2 mb-2 md:mb-0 text-lg"
+            onClick={() => setOpenModal(true)}
+          >
+            Search
+          </button>
         </div>
       </div>
       <hr className="mt-6 m-auto w-24 border-t-4" />

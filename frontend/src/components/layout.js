@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
   `)
 
   const [openModal, setOpenModal] = useState(false)
-  
+
   return (
     <div className="bg-gray-50 relative">
       <Header
