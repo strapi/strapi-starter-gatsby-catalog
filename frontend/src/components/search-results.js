@@ -31,16 +31,17 @@ const SearchResults = ({ setOpenModal, openModal }) => {
 
   const hasNoResults = searchQuery.length > 0 && results.length === 0
 
-  
-
   return (
-    <div ref={modal} className="bg-white relative m-auto max-h-full max-w-2xl p-4 overflow-scroll rounded-md shadow-2xl z-10">
+    <div
+      ref={modal}
+      className="bg-white relative m-auto max-h-full max-w-2xl p-4 overflow-scroll rounded-md shadow-2xl z-10"
+    >
       <div className="mb-6 mt-4">
         <button
           className="absolute right-4 top-2"
           onClick={() => setOpenModal(false)}
         >
-          <img className="w-6" src={CloseIcon} alt="close icon"/>
+          <img className="w-6" src={CloseIcon} alt="close icon" />
         </button>
         <ProductSearch
           searchQuery={searchQuery}
