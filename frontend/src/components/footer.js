@@ -1,7 +1,8 @@
 import React from "react"
-import github from "../images/github.svg"
-import twitter from "../images/twitter.svg"
-import facebook from "../images/facebook.svg"
+
+import github from "~/images/github.svg"
+import twitter from "~/images/twitter.svg"
+import facebook from "~/images/facebook.svg"
 
 const Footer = () => {
   return (

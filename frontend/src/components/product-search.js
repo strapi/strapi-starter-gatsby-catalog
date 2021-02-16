@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react"
 import PropTypes from "prop-types"
-import SearchIcon from "../images/search-icon.svg"
+
+import SearchIcon from "~/images/search-icon.svg"
 
 const ProductSearch = ({ searchQuery, setSearchQuery, openModal }) => {
   const inputEl = useRef(null)

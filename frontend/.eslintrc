@@ -1,4 +1,14 @@
 {
+  "settings": {
+    "import/resolver": {
+      "alias": [
+        [
+          "~",
+          "./src"
+        ]
+      ]
+    }
+  },
   "rules": {
     "prettier/prettier": [
       "error",

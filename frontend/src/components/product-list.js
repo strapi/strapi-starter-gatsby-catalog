@@ -1,10 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
-import SharpImage from "./sharp-image"
 import PropTypes from "prop-types"
-import { formatPrice } from "../helpers/currency-formatter"
 
-import Card from "./styled/card"
+import Card from "~/components/styled/card"
+import SharpImage from "~/components/sharp-image"
+
+import { formatPrice } from "~/helpers/currency-formatter"
 
 const ProductList = ({ products, gridCols }) => {
   return (

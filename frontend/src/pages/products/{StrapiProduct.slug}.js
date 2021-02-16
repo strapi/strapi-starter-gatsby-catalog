@@ -1,11 +1,13 @@
 import React from "react"
-import Layout from "../../components/layout"
-import { graphql } from "gatsby"
-import SharpImage from "../../components/sharp-image"
 import ReactMarkdown from "react-markdown"
-import ProductList from "../../components/product-list"
-import SEO from "../../components/seo"
-import { formatPrice } from "../../helpers/currency-formatter"
+import { graphql } from "gatsby"
+
+import Layout from "~/components/layout"
+import ProductList from "~/components/product-list"
+import SEO from "~/components/seo"
+import SharpImage from "~/components/sharp-image"
+
+import { formatPrice } from "~/helpers/currency-formatter"
 
 const ProductPage = ({ data }) => {
   const product = data.strapiProduct
