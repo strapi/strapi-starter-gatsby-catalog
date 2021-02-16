@@ -1,11 +1,10 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import Layout from "../../components/layout"
-
-import ProductList from "../../components/product-list"
-import SEO from "../../components/seo"
-import PageHeading from "../../components/styled/page-heading"
+import Layout from "~/components/layout"
+import PageHeading from "~/components/styled/page-heading"
+import ProductList from "~/components/product-list"
+import SEO from "~/components/seo"
 
 const SearchPage = ({
   data: {

@@ -1,7 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import StrapiLogo from "../images/strapi.png"
+
+import StrapiLogo from "~/images/strapi.png"
 
 const Header = ({ setOpenModal }) => {
   return (

@@ -1,10 +1,10 @@
 import React from "react"
-import SEO from "../../components/seo"
 import { graphql } from "gatsby"
 
-import Layout from "../../components/layout"
-import ProductList from "../../components/product-list"
-import PageHeading from "../../components/styled/page-heading"
+import Layout from "~/components/layout"
+import PageHeading from "~/components/styled/page-heading"
+import ProductList from "~/components/product-list"
+import SEO from "~/components/seo"
 
 const CategoryPage = ({ data }) => {
   const products = data.strapiCategory.products

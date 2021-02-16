@@ -2,13 +2,13 @@ import React, { useState, useRef } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { useFlexSearch } from "react-use-flexsearch"
 
-import ProductList from "./product-list"
-import PageHeading from "./styled/page-heading"
-import ProductSearch from "./product-search"
+import ProductList from "~/components/product-list"
+import PageHeading from "~/components/styled/page-heading"
+import ProductSearch from "~/components/product-search"
 
-import CloseIcon from "../images/close.svg"
+import CloseIcon from "~/images/close.svg"
 
-import { useOnClickOutside, useOnKeypress } from "../helpers/hooks"
+import { useOnClickOutside, useOnKeypress } from "~/helpers/hooks"
 
 const SearchResults = ({ setOpenModal, openModal }) => {
   const data = useStaticQuery(graphql`

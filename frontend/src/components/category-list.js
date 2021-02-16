@@ -1,9 +1,9 @@
 import React from "react"
 import { Link } from "gatsby"
-import SharpImage from "./sharp-image"
 import PropTypes from "prop-types"
 
-import Card from "./styled/card"
+import SharpImage from "~/components/sharp-image"
+import Card from "~/components/styled/card"
 
 const CategoryList = ({ categories }) => (
   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
