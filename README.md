@@ -1,8 +1,10 @@
-# Strapi Starter Gatsby Catalog [WIP]
+# Strapi Starter Gatsby Catalog
 
-This starter allows you to create a Catalog using Gatsby with a Strapi backend. This starter, and its associated template, uses musical instruments as sample seed data, but it could be customized for any product.
+![screenshot image](/screenshot.png)
 
-This is an open source project. Feel free contribute by adding features and reporting bugs.
+This starter allows you to create a Catalog using Gatsby with a Strapi backend. The starter, and its associated template, uses musical instruments as sample seed data, but it could be customized for any product.
+
+This is an open source project. Feel free to contribute by adding features and reporting bugs.
 
 ## Features
 
