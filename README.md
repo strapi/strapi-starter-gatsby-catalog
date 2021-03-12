@@ -8,7 +8,7 @@ This is an open source project. Feel free to contribute by adding features and r
 
 ## Features
 
-- 2 Collection types: Product, Catgory
+- 2 Collection types: Product, Category
 - Specifications component for products
 - Related products
 - Local Search using [gatsby-plugin-local-search](https://www.gatsbyjs.com/plugins/gatsby-plugin-local-search/)
