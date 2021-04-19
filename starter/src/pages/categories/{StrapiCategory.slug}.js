@@ -34,9 +34,7 @@ export const query = graphql`
         id
         image {
           childImageSharp {
-            fluid(maxWidth: 1024, maxHeight: 768) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FULL_WIDTH, aspectRatio: 1.3)
           }
         }
       }

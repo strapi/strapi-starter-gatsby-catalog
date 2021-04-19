@@ -10,7 +10,7 @@
     "babel-preset-gatsby": "^1.3.0",
     "flexsearch": "^0.6.32",
     "gatsby": "^3.3.0",
-    "gatsby-image": "^3.3.0",
+    "gatsby-plugin-image": "^1.3.0",
     "gatsby-plugin-local-search": "^2.0.1",
     "gatsby-plugin-manifest": "^3.0.0",
     "gatsby-plugin-offline": "^4.3.0",

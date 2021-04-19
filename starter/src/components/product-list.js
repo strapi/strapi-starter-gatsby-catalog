@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 
 import Card from "~/components/styled/card"
-import SharpImage from "~/components/sharp-image"
+import Image from "~/components/image"
 
 import { formatPrice } from "~/helpers/currency-formatter"
 
@@ -14,7 +14,8 @@ const ProductList = ({ products, gridCols }) => {
         return (
           <Card key={product.id}>
             <Link to={`/products/${product.slug}`} key={product.id}>
-              <SharpImage
+              <Image
+                alt="Product Image"
                 className="rounded-t-md border-gray-200	 border-b"
                 image={product.image}
               />

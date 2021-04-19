@@ -3,6 +3,9 @@ require("dotenv").config({
 })
 
 module.exports = {
+  flags: {
+    DEV_SSR: false,
+  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
@@ -12,6 +15,7 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     "gatsby-plugin-postcss",
@@ -75,20 +79,7 @@ module.exports = {
                   description
                   image {
                     childImageSharp {
-                      fluid(maxWidth: 1024, maxHeight: 768) {
-                        originalImg
-                        originalName
-                        aspectRatio
-                        base64
-                        presentationHeight
-                        presentationWidth
-                        sizes
-                        src
-                        srcSet
-                        srcSetWebp
-                        srcWebp
-                        tracedSVG
-                      }
+                      gatsbyImageData(layout: FULL_WIDTH, aspectRatio: 1.3)
                     }
                   }
                 }

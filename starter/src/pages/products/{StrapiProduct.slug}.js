@@ -5,7 +5,7 @@ import { graphql } from "gatsby"
 import Layout from "~/components/layout"
 import ProductList from "~/components/product-list"
 import SEO from "~/components/seo"
-import SharpImage from "~/components/sharp-image"
+import Image from "~/components/image"
 
 import { formatPrice } from "~/helpers/currency-formatter"
 
@@ -22,7 +22,11 @@ const ProductPage = ({ data }) => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24 mt-4">
         {product.image && (
           <div className="md:col-span-2 md:pr-4">
-            <SharpImage className="rounded-md" image={product.image} />
+            <Image
+              className="rounded-md"
+              image={product.image}
+              alt="Product Image"
+            />
           </div>
         )}
         <div className={`flex flex-col justify-${flexJustify}`}>
@@ -90,9 +94,7 @@ export const query = graphql`
       image {
         publicURL
         childImageSharp {
-          fluid(maxWidth: 1024, maxHeight: 768) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(layout: FULL_WIDTH, aspectRatio: 1.3)
         }
       }
       specifications {
@@ -106,9 +108,7 @@ export const query = graphql`
         slug
         image {
           childImageSharp {
-            fluid(maxWidth: 1024, maxHeight: 768) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FULL_WIDTH, aspectRatio: 1.3)
           }
         }
       }
