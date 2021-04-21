@@ -28,7 +28,7 @@ export const query = graphql`
           slug
           image {
             childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH, aspectRatio: 1.3)
+              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1.3)
             }
           }
         }
