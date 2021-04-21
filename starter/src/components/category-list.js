@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 
-import SharpImage from "~/components/sharp-image"
+import Image from "~/components/image"
 import Card from "~/components/styled/card"
 
 const CategoryList = ({ categories }) => (
@@ -11,7 +11,11 @@ const CategoryList = ({ categories }) => (
       return (
         <Card key={node.id}>
           <Link to={`/categories/${node.slug}`}>
-            <SharpImage className="rounded-t-md" image={node.image} />
+            <Image
+              alt="Category Image"
+              className="rounded-t-md border-gray-200	 border-b"
+              image={node.image}
+            />
             <p className="px-4 py-6">{node.name}</p>
           </Link>
         </Card>
