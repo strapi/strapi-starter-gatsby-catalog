@@ -36,7 +36,7 @@ module.exports = {
       options: {
         apiURL: process.env.API_URL || `http://localhost:1337`,
         queryLimit: 1000, // Default to 100
-        contentTypes: [`product`, `category`],
+        collectionTypes: [`product`, `category`],
         singleTypes: [`global`],
       },
     },
@@ -78,8 +78,10 @@ module.exports = {
                   slug
                   description
                   image {
-                    childImageSharp {
-                      gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1.3)
+                    localFile {
+                      childImageSharp {
+                        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1.3)
+                      }
                     }
                   }
                 }

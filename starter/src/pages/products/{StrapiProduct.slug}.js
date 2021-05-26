@@ -12,7 +12,10 @@ import { formatPrice } from "~/helpers/currency-formatter"
 const ProductPage = ({ data }) => {
   const product = data.strapiProduct
 
-  const seo = { title: product.title, image: product.image.publicURL }
+  const seo = {
+    title: product.title,
+    shareImage: product.image,
+  }
 
   const flexJustify = product.specifications.length > 0 ? "between" : "center"
 
@@ -92,9 +95,15 @@ export const query = graphql`
       price
       dealerUrl
       image {
-        publicURL
-        childImageSharp {
-          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1.3)
+        localFile {
+          publicURL
+          childImageSharp {
+            gatsbyImageData(
+              layout: FULL_WIDTH
+              placeholder: BLURRED
+              aspectRatio: 1.3
+            )
+          }
         }
       }
       specifications {
@@ -107,8 +116,14 @@ export const query = graphql`
         id
         slug
         image {
-          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1.3)
+          localFile {
+            childImageSharp {
+              gatsbyImageData(
+                layout: FULL_WIDTH
+                placeholder: BLURRED
+                aspectRatio: 1.3
+              )
+            }
           }
         }
       }

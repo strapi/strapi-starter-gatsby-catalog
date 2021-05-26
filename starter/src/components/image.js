@@ -8,8 +8,14 @@ const Image = ({ image, className, alt }) => {
     query {
       strapiGlobal {
         placeHolder {
-          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1.3)
+          localFile {
+            childImageSharp {
+              gatsbyImageData(
+                layout: FULL_WIDTH
+                placeholder: BLURRED
+                aspectRatio: 1.3
+              )
+            }
           }
         }
       }
@@ -20,13 +26,19 @@ const Image = ({ image, className, alt }) => {
     return (
       <GatsbyImage
         className={className}
-        image={getImage(data.strapiGlobal.placeHolder)}
+        image={getImage(data.strapiGlobal.placeHolder.localFile)}
         alt="Placeholder Image"
       />
     )
   }
 
-  return <GatsbyImage alt={alt} className={className} image={getImage(image)} />
+  return (
+    <GatsbyImage
+      alt={alt}
+      className={className}
+      image={getImage(image.localFile)}
+    />
+  )
 }
 
 Image.propTypes = {

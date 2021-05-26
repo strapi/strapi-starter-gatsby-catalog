@@ -27,8 +27,14 @@ export const query = graphql`
           id
           slug
           image {
-            childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1.3)
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  layout: FULL_WIDTH
+                  placeholder: BLURRED
+                  aspectRatio: 1.3
+                )
+              }
             }
           }
         }
