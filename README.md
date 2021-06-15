@@ -6,6 +6,10 @@ This starter allows you to create a Catalog using Gatsby with a Strapi backend. 
 
 This is an open source project. Feel free to contribute by adding features and reporting bugs.
 
+This starter uses the [Strapi catalog template](https://github.com/strapi/strapi-template-catalog)
+
+Check out all of our starters [here](https://strapi.io/starters)
+
 ## Features
 
 - 2 Collection types: Product, Category
