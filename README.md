@@ -1,3 +1,9 @@
+**:no_entry: Deprecated**
+
+This repository is no longer maintained and only works for Strapi v3. To find the newest Strapi v4 starters, check out the [starters-and-templates monorepo](https://github.com/strapi/starters-and-templates/).
+
+---
+
 # Strapi Starter Gatsby Catalog
 
 ![screenshot image](/screenshot.png)
@@ -23,11 +29,7 @@ Check out all of our starters [here](https://strapi.io/starters)
 Use our `create-strapi-starter` CLI to create your project.
 
 ```sh
-# Using Yarn
-yarn create strapi-starter my-project gatsby-catalog
-
-# Or using NPM
-npx create-strapi-starter my-project gatsby-catalog
+npx create-strapi-starter@3 my-project gatsby-catalog
 ```
 
 The CLI will create a monorepo, install dependencies, and run your project automatically.
